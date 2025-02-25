@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:QuizzClient"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="Aqua">
-
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
+        </Grid.Background>
     </Grid>
 </Window>

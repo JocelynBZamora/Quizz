@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuizzClient.View
 {
     /// <summary>
-    /// Lógica de interacción para Login.xaml
+    /// Lógica de interacción para LoginView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class LoginView : UserControl
     {
-        public Login()
+        public LoginView()
         {
             InitializeComponent();
-        }
-
-        private void btnEntrar_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
