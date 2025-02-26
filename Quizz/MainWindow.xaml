@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.Background>
+            <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
+        </Grid.Background>
+        <Label Content="Quizz" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontFamily="Stencil Std, fantasy" FontSize="50" Foreground="White"/>
     </Grid>
 </Window>
