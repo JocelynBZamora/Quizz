@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace QuizzServer.Model
 {
-    public partial class PersonasDTO : ObservableObject
+    public partial class PersonaDTO: ObservableObject
     {
         [ObservableProperty]
 
@@ -20,9 +18,5 @@ namespace QuizzServer.Model
             get { return nombre; }
             set { nombre = value; }
         }
-        //cliente
-        [JsonIgnore]
-        public TcpClient? Cliente { get; set; }
     }
-  
 }
