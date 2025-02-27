@@ -9,7 +9,7 @@ namespace QuizzServer.Model
 {
     public class ListaPersonas
     {
-        List<PersonaDTO> listaPersonas = new List<PersonaDTO>();
+        List<PersonaDTO> listaPersonas { get; set; } = new();
         public ListaPersonas()
         {
             for (int i = 0; i <= 3; i++)
