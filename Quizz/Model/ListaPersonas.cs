@@ -12,7 +12,7 @@ namespace QuizzServer.Model
         List<PersonaDTO> listaPersonas { get; set; } = new();
         public ListaPersonas()
         {
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i == 3; i++)
             {
                 listaPersonas.Add(null);
             }
