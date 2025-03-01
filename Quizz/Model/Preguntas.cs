@@ -9,6 +9,7 @@ namespace QuizzServer.Model
     public class Preguntas
     {
         public string Pregunta { get; set; } = null!;
+        public List<Respuestas>respuestas { get; set; } = new List<Respuestas>();
 
     }
     public class Respuestas
