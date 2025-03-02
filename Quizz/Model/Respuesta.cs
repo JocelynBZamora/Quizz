@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace QuizzServer.Model
 {
-    public class Personas
+    public class Respuesta
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; } = null!;
         public int NumRespuesta { get; set; } 
     }
 }

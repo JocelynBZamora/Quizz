@@ -23,7 +23,7 @@ namespace QuizzServer.Services
             hilo.Start();
 
         }
-        public event Action<Personas>? PersonaResivida;//no se porque da error
+        public event Action<Respuesta>? PersonaResivida;
 
         void ResivirRespuesta()
         {
@@ -34,7 +34,8 @@ namespace QuizzServer.Services
 
                 var json = Encoding.UTF8.GetString(Buffer);
 
-                var rect = JsonSerializer.Deserialize<Personas>(json);
+                
+                var rect = JsonSerializer.Deserialize<Respuesta>(json);
                 if (rect != null)
                 {
                     try
@@ -43,10 +44,10 @@ namespace QuizzServer.Services
                         string NombreMaquina = Dns.GetHostEntry(cliente.Address).HostName;
                         PersonaResivida?.Invoke(rect);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
 
-                        throw;
+                        Debug.WriteLine(ex.Message);
                     }
                 }
 
