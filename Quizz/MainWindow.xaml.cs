@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using QuizzServer.Model;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace Quizz
         public MainWindow()
         {
             InitializeComponent();
+            DatosModel datosModel = new DatosModel();
         }
     }
 }
