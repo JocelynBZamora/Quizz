@@ -19,18 +19,30 @@ namespace QuizzServer.Model
         {
             conn.CreateTable<Respuestas>();
             conn.CreateTable<Preguntas>();
-            if (!Get().Any())
+            if (!GetPreguntas().Any())
             {
                 SetPreguntas();
             }
             else
             {
-                var p = Get();
+                var p = GetPreguntas();
                 string a = string.Empty;
             }
 
         }
-        public Dictionary<Preguntas,List<Respuestas>> Get()
+        public Dictionary<Seccion, List<Preguntas>> GetSeccion()
+        {
+            Dictionary<Seccion, List<Preguntas>> response = new();
+            List<Seccion>seccions = new List<Seccion>();
+            List<Preguntas>preguntas = new List<Preguntas>();
+            //regresa todas la tabla de seccion
+            foreach (var item in seccions)
+            {
+                response.Add(item, preguntas.Where(x => x.IdSeccion == item.Id).ToList());
+            }
+            return response;
+        }
+        public Dictionary<Preguntas,List<Respuestas>> GetPreguntas()
         {
             Dictionary<Preguntas, List<Respuestas>> response = new();
             List<Preguntas> preguntas = conn.Table<Preguntas>().ToList();
@@ -43,6 +55,9 @@ namespace QuizzServer.Model
             return response;
         }
        
+        /// <summary>
+        /// crea las preguntas y respuestas y las inserta en las tablas
+        /// </summary>
         public void SetPreguntas()
         {
             List<Preguntas> Lpreguntas = new List<Preguntas>();

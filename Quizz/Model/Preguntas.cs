@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace QuizzServer.Model
 {
+
+    public class Seccion
+    {
+        public int Id { get; set; }
+        public string NombreSec { get; set; } = null!;
+    }
     public class Preguntas
     {
         [PrimaryKey]
         public int Id { get; set; }
         public string Pregunta { get; set; } = null!;
+        public int IdSeccion { get; set; }
         //public List<Respuestas>respuestas { get; set; } = new List<Respuestas>();
 
     }
