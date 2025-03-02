@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizzServer.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
@@ -9,7 +10,7 @@ using System.Threading;
 
 namespace QuizzServer.Services
 {
-    internal class ListaServer
+    public class ListaServer
     {
         UdpClient Servidor;
         public ListaServer()
@@ -17,17 +18,38 @@ namespace QuizzServer.Services
             Servidor = new(65000);
             Servidor.EnableBroadcast = true;
 
+            Thread hilo = new(ResivirRespuesta);
+            hilo.IsBackground = true;
+            hilo.Start();
+
         }
+        public event Action<Personas>? PersonaResivida;//no se porque da error
+
         void ResivirRespuesta()
         {
             while (true)
             {
                 IPEndPoint cliente = new(IPAddress.Any, 0);
                 byte[] Buffer = Servidor.Receive(ref cliente);
-                
-                var json =Encoding.UTF8.GetString(Buffer);
-               
-                //var rect = JsonSerializer.Deserialize
+
+                var json = Encoding.UTF8.GetString(Buffer);
+
+                var rect = JsonSerializer.Deserialize<Personas>(json);
+                if (rect != null)
+                {
+                    try
+                    {
+                        //obtiene el nombre de la maquina para agg a la lista
+                        string NombreMaquina = Dns.GetHostEntry(cliente.Address).HostName;
+                        PersonaResivida?.Invoke(rect);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+
             }
         }
     }

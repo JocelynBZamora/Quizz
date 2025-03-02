@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizzServer.Model
 {
-    internal class Personas
+    public class Personas
     {
         public int Id { get; set; }
         public string Nombre { get; set; } = null!;
