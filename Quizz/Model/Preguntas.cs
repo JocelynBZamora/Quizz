@@ -10,17 +10,17 @@ namespace QuizzServer.Model
 
     public class Seccion
     {
+        [PrimaryKey]
         [AutoIncrement]
         public int Id { get; set; }
         public string NombreSec { get; set; } = null!;
     }
     public class Preguntas
     {
-        [AutoIncrement]
         public int Id { get; set; }
-        public string Pregunta { get; set; } = null!;
         public int RespCorrecta { get; set; }
         public int IdSeccion { get; set; }
+        public string Pregunta { get; set; } = null!;
         //public List<Respuestas>respuestas { get; set; } = new List<Respuestas>();
 
     }
