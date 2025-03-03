@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,17 +20,49 @@ namespace QuizzServer.ViewModel
     public partial class PreguntasViewModel : INotifyPropertyChanged
     {
 
-        int puntaje =1;
+        public int puntaje =1;
 
         ListaServer server = new ListaServer();
         public PreguntasViewModel()
         {
             server.PersonaResivida += RespuestaCliente;
+            ObtenerNombreMaquina();
             
 
         }
+        private string _nombreMaquina;
 
-//compara la informacion resivida si es correcta y suma el puntaje
+        public string NombreMaquina
+        {
+            get { return _nombreMaquina; }
+            set
+            {
+                _nombreMaquina = value;
+                OnPropertyChanged(nameof(NombreMaquina));
+            }
+        }
+
+
+        private void ObtenerNombreMaquina()
+        {
+            try
+            {
+                string hostName = Dns.GetHostName();  // Obtiene el nombre de la máquina local
+                NombreMaquina = hostName;
+            }
+            catch
+            {
+                NombreMaquina = "No disponible";
+            }
+        }
+
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        //compara la informacion resivida si es correcta y suma el puntaje
         private void RespuestaCliente(Respuesta obj)
         {
 
