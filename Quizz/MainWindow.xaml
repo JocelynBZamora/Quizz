@@ -7,31 +7,56 @@
         xmlns:v="clr-namespace:QuizzServer.View"
         xmlns:local="clr-namespace:Quizz"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Window.DataContext>
         <vm:PreguntasViewModel></vm:PreguntasViewModel>
     </Window.DataContext>
-    <DockPanel>
-        <DockPanel.Background>
+    <Grid Background="#FF727D73">
+        <!--<Grid.Background>
             <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
-        </DockPanel.Background>
-        <Label Content="Quizz" 
-               FontFamily="Stencil Std, fantasy" 
-               FontSize="50" 
-               Foreground="White" 
+        </Grid.Background>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Título -->
+            <RowDefinition Height="*"/>
+            <!-- Contenido principal -->
+        </Grid.RowDefinitions>
+
+        <!-- Título centrado arriba -->
+        <Grid Background="#D0DDD0">
+            <Label Content="Quizz" 
                HorizontalAlignment="Center" 
-               VerticalAlignment="Top"
-               DockPanel.Dock="Top"
-               Margin="10"/>
+               VerticalAlignment="Center" 
+               FontFamily="Stencil Std, fantasy" 
+               FontSize="45" 
+               Foreground="White"/>
+        <Label HorizontalAlignment="Right" FontSize="20" FontFamily="Stencil Std, fantasy"  Content="Tiempo: " Padding="10" Margin="5" Width="150" Foreground="red"></Label>
+        </Grid>
 
-        <!-- Vista de Usuarios alineada a la derecha -->
-        <v:UsuariosView Background="Transparent" 
-                        Width="255"
-                        Height="Auto"
-                        DockPanel.Dock="Right"
-                        Margin="10"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"/>
+        <!-- Contenido principal -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
 
-    </DockPanel>
+                <ColumnDefinition Width="1*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <!-- Lista de preguntas -->
+
+
+            <!-- Sección de usuario -->
+            <StackPanel Background="#D0DDD0" Grid.Column="1" VerticalAlignment="Top" Height="280" Margin="10,0,10,0">
+                <TextBlock Text="Usuarios:"  FontWeight="Bold" FontSize="20" Foreground="Black" Padding="5" Margin="0,0,0,5"/>
+                <ListBox Height="80" Background="Transparent" BorderThickness="0">Aqui el nombre</ListBox>
+
+            </StackPanel>
+            <StackPanel Height="280" VerticalAlignment="Top" Background="#D0DDD0">
+                <v:Secciones Height="280" Width="488"></v:Secciones>
+                <!--se supone que tambien aqui se debe de mostrar las preguntas y el tiempo a elegir-->
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Window>

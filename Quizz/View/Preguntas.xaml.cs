@@ -1,5 +1,4 @@
-﻿using QuizzServer.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuizzServer.View
 {
     /// <summary>
-    /// Lógica de interacción para UsuariosView.xaml
+    /// Lógica de interacción para Preguntas.xaml
     /// </summary>
-    public partial class UsuariosView : UserControl
+    public partial class Preguntas : UserControl
     {
-        public UsuariosView()
+        public Preguntas()
         {
             InitializeComponent();
         }
