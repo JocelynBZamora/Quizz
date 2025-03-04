@@ -24,7 +24,6 @@ namespace QuizzServer.View
         public UsuariosView()
         {
             InitializeComponent();
-            DataContext = new PreguntasViewModel();
         }
     }
 }

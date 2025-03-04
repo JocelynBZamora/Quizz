@@ -1,4 +1,5 @@
 ﻿using QuizzServer.Model;
+using QuizzServer.ViewModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,8 @@ namespace Quizz
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new PreguntasViewModel();
+
         }
     }
 }
