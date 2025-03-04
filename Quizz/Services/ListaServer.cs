@@ -15,7 +15,7 @@ namespace QuizzServer.Services
         UdpClient Servidor;
         public ListaServer()
         {
-            Servidor = new(65001);
+            Servidor = new(65000);
             Servidor.EnableBroadcast = true;
 
             Thread hilo = new(ResivirRespuesta);
