@@ -40,8 +40,7 @@ namespace QuizzServer.Services
                 {
                     try
                     {
-                        //obtiene el nombre de la maquina para agg a la lista
-                        string NombreMaquina = Dns.GetHostEntry(cliente.Address).HostName;
+                     
                         PersonaResivida?.Invoke(rect);
                     }
                     catch (Exception ex)

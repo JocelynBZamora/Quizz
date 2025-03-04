@@ -23,39 +23,16 @@ namespace QuizzServer.ViewModel
         public int puntaje =1;
 
         ListaServer server = new ListaServer();
+        public string IP { get; set; } = "0.0.0.0";
         public PreguntasViewModel()
         {
             server.PersonaResivida += RespuestaCliente;
-            ObtenerNombreMaquina();
-            
+            var ips = Dns.GetHostAddresses(Dns.GetHostName());
+            IP = ips.Where(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).
+               Select(x => x.ToString()).FirstOrDefault() ?? "0.0.0.0";
 
         }
-        private string _nombreMaquina;
-
-        public string NombreMaquina
-        {
-            get { return _nombreMaquina; }
-            set
-            {
-                _nombreMaquina = value;
-                OnPropertyChanged(nameof(NombreMaquina));
-            }
-        }
-
-
-        private void ObtenerNombreMaquina()
-        {
-            try
-            {
-                string hostName = Dns.GetHostName();  // Obtiene el nombre de la máquina local
-                NombreMaquina = hostName;
-            }
-            catch
-            {
-                NombreMaquina = "No disponible";
-            }
-        }
-
+    
 
         private void OnPropertyChanged(string propertyName)
         {

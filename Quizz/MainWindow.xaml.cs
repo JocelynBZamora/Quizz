@@ -20,7 +20,6 @@ namespace Quizz
         public MainWindow()
         {
             InitializeComponent();
-            DatosModel datosModel = new DatosModel();
         }
     }
 }

@@ -4,13 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizzServer.View"
-             xmlns:vm="clr-namespace:QuizzServer.ViewModel"
+             xmlns:vm="clr-namespace:QuizzServer.ViewModel" d:DataContext="{d:DesignInstance Type=vm:PreguntasViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Window.DataContext>
-        <vm:PreguntasViewModel></vm:PreguntasViewModel>
-    </Window.DataContext>
-        <TextBox Text="{Binding NombreMaquina }">
-            
+
+    <TextBox FontFamily="sans-serif" Padding="10" Margin="618,2,0,157" Background="#59FFFFFF" TextWrapping="Wrap">
+        
     </TextBox>
 </UserControl>

@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:QuizzServer.ViewModel"
         xmlns:local="clr-namespace:Quizz"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:PreguntasViewModel></vm:PreguntasViewModel>
+    </Window.DataContext>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
