@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 namespace QuizzServer.Model
 {
 
-    public class Seccion
-    {
-        public string NombreSec { get; set; } = null!;
-        public List<Preguntas> preguntas { get; set; } = new List<Preguntas>();
-    }
-    public class Preguntas
-    {
-        public int Id { get; set; }
-        public int RespuestaCorrecta { get; set; }
-        public string Pregunta { get; set; } = null!;
-        public List<Respuestas> respuestas { get; set; } = new List<Respuestas>();
+    //public class Seccion
+    //{
+    //    public string NombreSec { get; set; } = null!;
+    //    public List<Preguntas> preguntas { get; set; } = new List<Preguntas>();
+    //}
+    //public class Preguntas
+    //{
+    //    public int Id { get; set; }
+    //    public int RespuestaCorrecta { get; set; }
+    //    public string Pregunta { get; set; } = null!;
+    //    public List<Respuestas> respuestas { get; set; } = new List<Respuestas>();
 
-    }
+    //}
     public class PreguntaItem
     {
         public string Pregunta { get; set; } = null!;
@@ -32,6 +32,10 @@ namespace QuizzServer.Model
 
         public string Respuesta { get; set; } = null!;
     }
-
+    public class Usuario
+    {
+        public string NombreUsuario { get; set; } = null!;
+        public int RespuestaSeleccionada { get; set; }
+    }
 
 }

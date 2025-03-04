@@ -28,17 +28,33 @@ namespace QuizzServer.ViewModel
         public PreguntasViewModel()
         {
             server.PersonaResivida += RespuestaCliente;
-            var ips = Dns.GetHostAddresses(Dns.GetHostName());
-            IP = ips.Where(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).
-               Select(x => x.ToString()).FirstOrDefault() ?? "0.0.0.0";
             cargarsecciones();
         }
-    
+
+      
 
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
+
+        //agrega al jugador
+        private void EntradaJugador(Respuesta obj)
+        {
+            if (obj != null)
+            {
+
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                Usuario u = new();
+                u.NombreUsuario = obj.Nombre;
+                u.RespuestaSeleccionada = obj.NumRespuesta;
+                Usuarios.Add(u);
+            });
+            }
+        }
+   
 
         //compara la informacion resivida si es correcta y suma el puntaje
         private void RespuestaCliente(Respuesta obj)
@@ -46,7 +62,7 @@ namespace QuizzServer.ViewModel
 
             App.Current.Dispatcher.Invoke(() => 
             {
-                Preguntas p = new();
+                PreguntaItem p = new();
 
                 if (p.RespuestaCorrecta == obj.NumRespuesta )
                 {

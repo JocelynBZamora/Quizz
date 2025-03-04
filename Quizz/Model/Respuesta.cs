@@ -8,6 +8,7 @@ namespace QuizzServer.Model
 {
     public class Respuesta
     {
+        public string Nombre { get; set; } = null!; 
         public int NumRespuesta { get; set; } 
     }
 }
