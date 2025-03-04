@@ -34,7 +34,7 @@ namespace QuizzServer.Model
     }
     public class Usuario
     {
-        public string NombreUsuario { get; set; } = null!;
+        public string NombreUsuario { get; set; } = "Juan";
         public int RespuestaSeleccionada { get; set; }
     }
 

@@ -33,10 +33,7 @@ namespace QuizzServer.ViewModel
 
       
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    
         public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
 
         //agrega al jugador
@@ -71,7 +68,6 @@ namespace QuizzServer.ViewModel
                 
             });
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
 
 
         //public ObservableCollection<Seccion> Seccions { get; set; } = new ObservableCollection<Seccion>();
@@ -89,20 +85,12 @@ namespace QuizzServer.ViewModel
             var t = datos;
         }
 
-        //public void CargarPreguntas()
-        //{
-        //    string json = File.ReadAllText("DatosModel.json");
-        //    var list = JsonConvert.DeserializeObject<List<Preguntas>>(json);
 
-        //    if (list != null)
-        //    {
-        //        foreach (var item in list)
-        //        {
-
-        //            questions = new ObservableCollection<Preguntas>(item.Pregunta);
-        //        }
-        //    }
-        //}
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
 
     }
 }

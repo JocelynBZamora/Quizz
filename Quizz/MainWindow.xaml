@@ -4,16 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:QuizzServer.ViewModel"
+        xmlns:v="clr-namespace:QuizzServer.View"
         xmlns:local="clr-namespace:Quizz"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <vm:PreguntasViewModel></vm:PreguntasViewModel>
     </Window.DataContext>
-    <Grid>
-        <Grid.Background>
+    <DockPanel>
+        <DockPanel.Background>
             <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
-        </Grid.Background>
-        <Label Content="Quizz" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontFamily="Stencil Std, fantasy" FontSize="50" Foreground="White"/>
-    </Grid>
+        </DockPanel.Background>
+        <Label Content="Quizz" 
+               FontFamily="Stencil Std, fantasy" 
+               FontSize="50" 
+               Foreground="White" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top"
+               DockPanel.Dock="Top"
+               Margin="10"/>
+
+        <!-- Vista de Usuarios alineada a la derecha -->
+        <v:UsuariosView Background="Transparent" 
+                        Width="255"
+                        Height="Auto"
+                        DockPanel.Dock="Right"
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"/>
+
+    </DockPanel>
 </Window>
