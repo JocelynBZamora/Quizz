@@ -24,7 +24,6 @@ namespace QuizzServer.ViewModel
         public int puntaje =1;
 
         ListaServer server = new ListaServer();
-        public string IP { get; set; } = "0.0.0.0";
         public PreguntasViewModel()
         {
             server.PersonaResivida += RespuestaCliente;
