@@ -24,9 +24,5 @@ namespace QuizzClient.View
             InitializeComponent();
         }
 
-        private void btnEntrar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

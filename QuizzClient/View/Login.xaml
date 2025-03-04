@@ -33,7 +33,7 @@
                         <Run Text="Nombre del jugador:"/>
                     </Bold>
                 </Label>
-                <TextBox x:Name="txtUsuario" Foreground="Black" FontSize="10" Padding="5" FontFamily="Stencil Std, fantasy" Margin="5 10" BorderBrush="Black" BorderThickness="0.5 0 0.5 1" Background="Transparent"/>
+                <TextBox x:Name="txtUsuario" Foreground="Black" FontSize="10" Padding="5" FontFamily="Stencil Std, fantasy" Margin="5 10" BorderBrush="Black" BorderThickness="0.5 0 0.5 1" Background="Transparent" TextChanged="txtUsuario_TextChanged"/>
                 <Button x:Name="btnEntrar" Background="#7F545D6A" Foreground="Black" FontFamily="Stencil Std, fantasy" Content="Iniciar" HorizontalAlignment="Center" Width="100" Margin="50" Click="btnEntrar_Click" />
             </StackPanel>
         </Grid>
