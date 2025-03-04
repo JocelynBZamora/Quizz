@@ -13,6 +13,7 @@ using System.Net;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using static QuizzServer.Model.PeeguntasModel1;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace QuizzServer.ViewModel
@@ -30,7 +31,7 @@ namespace QuizzServer.ViewModel
             var ips = Dns.GetHostAddresses(Dns.GetHostName());
             IP = ips.Where(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).
                Select(x => x.ToString()).FirstOrDefault() ?? "0.0.0.0";
-
+            cargarsecciones();
         }
     
 
@@ -55,23 +56,22 @@ namespace QuizzServer.ViewModel
             });
         }
         public event PropertyChangedEventHandler? PropertyChanged;
-       
+
 
         //public ObservableCollection<Seccion> Seccions { get; set; } = new ObservableCollection<Seccion>();
         //public ObservableCollection<Dictionary<tring,Respuesta>> questions { get; set; } = new();
 
 
-        //public void CargarSecciones()
-        //{
-        //    string json = File.ReadAllText("DatosModel.json");
+        public void cargarsecciones()
+        {
+            string DirectorioBase = AppDomain.CurrentDomain.BaseDirectory;
+            string ruta = Path.Combine(DirectorioBase, @"Model\DatosModel1.json");
+            string json = File.ReadAllText(ruta);
 
-        //    var datos = JsonConvert.DeserializeObject<Root>(json);
+            var datos = JsonConvert.DeserializeObject<Root>(json);
 
-        //    if (datos != null && datos.Secciones != null)
-        //    {
-        //        Seccions = new ObservableCollection<Seccion>(datos.Secciones);
-        //    }
-        //}
+            var t = datos;
+        }
 
         //public void CargarPreguntas()
         //{
