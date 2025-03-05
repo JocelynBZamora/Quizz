@@ -27,21 +27,14 @@ namespace QuizzServer.ViewModel
     {
 
         public int puntaje = 1;
-        private UserControl vistaActual;
-        public UserControl Vista { get => vistaActual; set { vistaActual = value;OnPropertyChanged(nameof(vistaActual)); } }
         ListaServer server = new ListaServer();
         public PreguntasViewModel()
         {
             server.PersonaResivida += EntradaJugador;
             cargarsecciones();
-            VerPreguntasCommand = new RelayCommand(VerPreguntas);
         }
 
-         ICommand VerPreguntasCommand {  get; set; }
-        public void VerPreguntas()
-        {
-            Vista = new Preguntas();
-        }
+       
     
         public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
 

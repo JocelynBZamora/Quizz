@@ -16,7 +16,7 @@
                FontSize="25" FontFamily="Stencil Std, fantasy"
                Margin="0,15,0,0" Padding="10" Height="48"></Label>
         <Grid Grid.Row="2">
-
+            <!--si quieres puedes hacer otros 3 user control como este y enlazarlo con cada tipo de seccion-->
             <Label Content="1 Respuesta" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="0,16,0,0" ></Label>
             <Label Content="2 Respuesta"  HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="0,60,0,0" ></Label>
             <Label Content="3 Respuesta" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Margin="0,106,0,0"  />

@@ -13,18 +13,20 @@ namespace QuizzClient.ViewModel
     {
         public RespuestaCliente Respuesta { get; set; } = new();
         QuizzClient.Services.RespuestaCliente cliente { get; set; } = new();
-        public RelayCommand EnviarCommand { get; }
+        public RelayCommand EnviarCommand { get; set; }
 
         public RespuestasVM()
         {
             EnviarCommand = new RelayCommand(Enviar);
         }
 
+
         private void Enviar()
         {
+            
             cliente.Enviar(Respuesta);
         }
-
+       
 
         public event PropertyChangingEventHandler? PropertyChanging;
     }

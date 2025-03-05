@@ -6,17 +6,28 @@
              xmlns:local="clr-namespace:QuizzClient.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
+    <StackPanel>
+        <Label FontSize="30" HorizontalAlignment="Center">Favor de elegir un numero del 1 al 4</Label>
+        <TextBox VerticalAlignment="Center" Height="30" Margin="5"></TextBox>
+        <Button Command="{Binding EnviarCommand}" Height="60" Padding="20, 10" Content="Enviar" Width="238"/>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            
         </Grid.RowDefinitions>
-        <Button Content="respuesta" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>
-        <Button Grid.Row="1" Content="respuesta2" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>
-        <Button Grid.Row="2" Content="respuesta3" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>
-        <Button Grid.Row="3" Content="respuesta4" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>
-
-    </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>-->
+        <!--debe de enviar la respuesta que es el numero que muestra//cambia las letras por el numero-->
+        <!--<Button Content="A" Background="#33D3D3D3"
+                FontFamily="Stencil Std, fantasy" FontSize="25" Margin="5"></Button>
+        <Button Grid.Row="0" Grid.Column="1" Content="B"
+                 FontFamily="Stencil Std, fantasy" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>
+        <Button Grid.Row="2" Content="C" Background="#33D3D3D3"
+               FontFamily="Stencil Std, fantasy" FontSize="25" Margin="5"></Button>-->
+        <!--<Button Grid.Row="3" Grid.Column="1" Content="D"
+               FontFamily="Stencil Std, fantasy" Background="#33D3D3D3" FontSize="25" Margin="5"></Button>-->
+        <!--al terminar debe de regresar al inicio-->
+    </StackPanel>
 </UserControl>
