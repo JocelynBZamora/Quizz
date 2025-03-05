@@ -52,10 +52,10 @@ namespace QuizzServer.Services
 
             }
         }
-        void EnviarTiempo()
-        {
-
-        }
+        //void EnviarTiempo()
+        //{
+        //    IPEndPoint s
+        //}
     }
 }
 

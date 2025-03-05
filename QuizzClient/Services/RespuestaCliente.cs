@@ -30,7 +30,7 @@ namespace QuizzClient.Services
             byte[] buffer = Encoding.UTF8.GetBytes(json);
 
             //envia
-            cliente.Send(buffer);
+            cliente.Send(buffer,buffer.Length,servidor);
         }
 
  

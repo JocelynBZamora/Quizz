@@ -48,7 +48,7 @@
 
             </StackPanel>
             <StackPanel Height="280" VerticalAlignment="Top" Background="#D0DDD0">
-                <v:Preguntas Height="280" Width="488" Loaded="Preguntas_Loaded"></v:Preguntas>
+                <v:Preguntas Height="280" Width="488"></v:Preguntas>
                 <!--se supone que tambien aqui se debe de mostrar las preguntas y el tiempo a elegir-->
             </StackPanel>
         </Grid>
