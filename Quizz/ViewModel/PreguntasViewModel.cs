@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -33,9 +34,7 @@ namespace QuizzServer.ViewModel
             server.PersonaResivida += EntradaJugador;
             cargarsecciones();
         }
-
        
-    
         public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
 
         //agrega al jugador

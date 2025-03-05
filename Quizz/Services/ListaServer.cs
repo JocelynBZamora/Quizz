@@ -52,6 +52,10 @@ namespace QuizzServer.Services
 
             }
         }
+        void EnviarTiempo()
+        {
+
+        }
     }
 }
 
