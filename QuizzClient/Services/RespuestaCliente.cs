@@ -33,9 +33,6 @@ namespace QuizzClient.Services
             cliente.Send(buffer);
         }
 
-        internal void Enviar(RespuestaCliente respuesta)
-        {
-            throw new NotImplementedException();
-        }
+ 
     }
 }

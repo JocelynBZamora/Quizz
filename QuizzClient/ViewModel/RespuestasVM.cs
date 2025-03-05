@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using QuizzClient.Model;
 using QuizzClient.Services;
 using System;
 using System.Collections.Generic;
@@ -11,22 +12,36 @@ namespace QuizzClient.ViewModel
 {
     internal class RespuestasVM : INotifyPropertyChanging
     {
-        public RespuestaCliente Respuesta { get; set; } = new();
+        public RespuestaModel Respuesta { get; set; } = new();
         QuizzClient.Services.RespuestaCliente cliente { get; set; } = new();
-        public RelayCommand EnviarCommand { get; set; }
+        public RelayCommand EnviarUsuarioCommand { get; set; }
+        public RelayCommand EnviarRespuestaCommand { get; set; }
 
         public RespuestasVM()
         {
-            EnviarCommand = new RelayCommand(Enviar);
+            EnviarUsuarioCommand = new RelayCommand(EnviarUsuario);
+            EnviarRespuestaCommand = new RelayCommand(EnviarRespuesta);
         }
 
 
-        private void Enviar()
+        private void EnviarUsuario()
         {
-            
-            cliente.Enviar(Respuesta);
+            if (Respuesta.NombreUsuario != string.Empty)
+            {
+                cliente.Enviar(Respuesta);
+
+            }
         }
-       
+        private void EnviarRespuesta()
+        {
+            if (Respuesta.Respuesta >= 1 && Respuesta.Respuesta <= 4)
+            {
+
+                cliente.Enviar(Respuesta);
+            }
+
+        }
+
 
         public event PropertyChangingEventHandler? PropertyChanging;
     }
