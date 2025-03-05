@@ -13,15 +13,10 @@
         <vm:PreguntasViewModel></vm:PreguntasViewModel>
     </Window.DataContext>
     <Grid Background="#FF727D73">
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="https://img.freepik.com/fotos-premium/pared-ladrillo_102332-4066.jpg?semt=ais_hybrid"/>
-        </Grid.Background>-->
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Título -->
             <RowDefinition Height="*"/>
-            <!-- Contenido principal -->
         </Grid.RowDefinitions>
 
         <!-- Título centrado arriba -->
