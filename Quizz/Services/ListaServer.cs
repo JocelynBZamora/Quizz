@@ -52,18 +52,18 @@ namespace QuizzServer.Services
 
             }
         }
-        //void EnviarTiempo(Tiempo r)
-        //{
-        //    //destino 
-        //    IPEndPoint servidor = new(IPAddress.Broadcast, 65000);
+        void EnviarTiempo(Tiempo r)
+        {
+            //destino 
+            IPEndPoint servidor = new(IPAddress.Broadcast, 65000);
 
-        //    //paquete
-        //    var json = JsonSerializer.Serialize(r);
-        //    byte[] buffer = Encoding.UTF8.GetBytes(json);
+            //paquete
+            var json = JsonSerializer.Serialize(r);
+            byte[] buffer = Encoding.UTF8.GetBytes(json);
 
-        //    //envia
-        //    Servidor.Send(buffer, buffer.Length, servidor);
-        //}
+            //envia
+            Servidor.Send(buffer, buffer.Length, servidor);
+        }
     }
 }
 
