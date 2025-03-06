@@ -44,11 +44,12 @@ namespace QuizzServer.ViewModel
         //agrega al jugador
         private void EntradaJugador(Respuesta obj)
         {
+            //guarda y muestra el nombre del usuario
             if (obj.Nombre != null)
             {
                 Usuario u = new();
                 u.Nombre = obj.Nombre;
-                usuarios.Add(u);
+                usuarios.Add(u); 
 
             }
             ActualizarNombre();
@@ -58,7 +59,7 @@ namespace QuizzServer.ViewModel
                 Usuario u = new();
 
                 u.RespuestaSeleccionada = obj.NumRespuesta;
-                Usuarios.Add(u);
+                usuarios.Add(u);
 
                 //foreach (var p in pregunta)
                 //{

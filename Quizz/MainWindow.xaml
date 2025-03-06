@@ -37,20 +37,30 @@
                 <ColumnDefinition Width="1*"/>
 
             </Grid.ColumnDefinitions>
-
-            <!-- Lista de preguntas -->
-
-
             <!-- Sección de usuario -->
-            <StackPanel Background="#D0DDD0" Grid.Column="1" VerticalAlignment="Top" Height="280" Margin="10,0,10,0">
-                <TextBlock Text="Usuarios:"  FontWeight="Bold" FontSize="20" Foreground="Black" Padding="5" Margin="0,0,0,5"/>
-                <ListBox Height="80" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Usuarios}" DisplayMemberPath="{Binding Nombre}"></ListBox>
+            <ItemsControl ItemsSource="{Binding Usuarios}" Height="280" VerticalAlignment="Top" Grid.Column="1" Background="#D0DDD0" Margin="5 0 ">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="2"></UniformGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
 
-            </StackPanel>
-            <StackPanel Height="280" VerticalAlignment="Top" Background="#D0DDD0">
+                        <Grid Background="#D0DDD0" VerticalAlignment="Top" Height="280" Margin="10,0,10,0">
+                            <TextBlock Text="Usuarios:"  FontWeight="Bold" FontSize="20" Foreground="Black" Padding="5" Margin="0,0,0,5"/>
+                            <ListBox Height="80" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Usuario}" DisplayMemberPath="{Binding Nombre}"></ListBox>
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+            <!---->
+            <Grid Height="280" VerticalAlignment="Top" Background="#D0DDD0">
                 <v:Preguntas Height="280" Width="488"></v:Preguntas>
                 <!--se supone que tambien aqui se debe de mostrar las preguntas y el tiempo a elegir-->
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
