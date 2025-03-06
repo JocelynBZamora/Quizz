@@ -27,37 +27,48 @@ namespace QuizzServer.ViewModel
     public partial class PreguntasViewModel : INotifyPropertyChanged
     {
 
-        public int puntaje = 1;
+        public int puntaje = 0;
+        List<PreguntaItem> pregunta = new();//persistente
         ListaServer server = new ListaServer();
         public PreguntasViewModel()
         {
             server.PersonaResivida += EntradaJugador;
             cargarsecciones();
         }
-       
+
         public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
 
         //agrega al jugador
         private void EntradaJugador(Respuesta obj)
         {
-            if (obj.Nombre != null && obj?.NumRespuesta != null)
+            if (obj.Nombre != null)
             {
 
-            
+
                 Usuario u = new();
                 u.NombreUsuario = obj.Nombre;
+                Usuarios.Add(u);
+
+            }
+            if (obj?.NumRespuesta != null)
+            {
+                Usuario u = new();
+
                 u.RespuestaSeleccionada = obj.NumRespuesta;
                 Usuarios.Add(u);
-                PreguntaItem p = new();
 
-                if (p.RespuestaCorrecta == obj.NumRespuesta)
-                { //compara la informacion resivida si es correcta y suma el puntaje
-                    puntaje++;
+                foreach (var p in pregunta)
+                {
+
+                    if (p.RespuestaCorrecta == obj.NumRespuesta)
+                    { //compara la informacion resivida si es correcta y suma el puntaje
+                        puntaje++;
+                    }
                 }
 
             }
         }
-   
+
 
         public void cargarsecciones()
         {

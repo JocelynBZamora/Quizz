@@ -13,7 +13,7 @@
     </Window.DataContext>
     <Grid Background="#FF727D73">
         <Grid Background="#D0DDD0" Margin="50">
-            <v:PreguntasView VerticalAlignment="Center"></v:PreguntasView>
+            <v:LoginView VerticalAlignment="Center"></v:LoginView>
             <!--Aqui adentro va el login y las respuestas-->
         </Grid>
     </Grid>

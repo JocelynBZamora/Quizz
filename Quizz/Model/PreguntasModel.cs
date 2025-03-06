@@ -27,14 +27,14 @@ namespace QuizzServer.Model
         public List<string> Respuestas { get; set; } = new();
         public int RespuestaCorrecta { get; set; }
     }
-    public class Respuestas
-    {
+    //public class Respuestas
+    //{
 
-        public string Respuesta { get; set; } = null!;
-    }
+    //    public string Respuesta { get; set; } = null!;
+    //}
     public class Usuario
     {
-        public string NombreUsuario { get; set; } = "Juan";
+        public string NombreUsuario { get; set; } = null!;
         public int RespuestaSeleccionada { get; set; }
     }
 
