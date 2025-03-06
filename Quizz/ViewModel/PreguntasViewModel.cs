@@ -25,10 +25,17 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace QuizzServer.ViewModel
 {
-    public partial class PreguntasViewModel : INotifyPropertyChanged
+    public partial class PreguntasViewModel : ObservableObject
     {
 
+        [ObservableProperty]
+        private string nombre;
+
+        [ObservableProperty]
+        private int respuestaSeleccionada;
+        [ObservableProperty]
         public int puntaje = 0;
+
         public ObservableCollection<Usuario> Usuarios { get; set; } = new();
         List<Usuario> usuarios = new();//persistente
         ListaServer server = new ListaServer();
@@ -45,7 +52,7 @@ namespace QuizzServer.ViewModel
         private void EntradaJugador(Respuesta obj)
         {
             //guarda y muestra el nombre del usuario
-            if (obj.Nombre != null)
+            if (!string.IsNullOrWhiteSpace(obj.Nombre))
             {
                 Usuario u = new();
                 u.Nombre = obj.Nombre;
@@ -83,9 +90,9 @@ namespace QuizzServer.ViewModel
         public void ActualizarNombre()
         {
             Usuarios.Clear();
-            foreach (var item in usuarios)
+            foreach (var u in usuarios)
             {
-                Usuarios.Add(item);
+                Usuarios.Add(u);
             }
         }
 
@@ -98,11 +105,11 @@ namespace QuizzServer.ViewModel
         
 
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public event PropertyChangedEventHandler? PropertyChanged;
+        //private void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+        //public event PropertyChangedEventHandler? PropertyChanged;
 
     }
 }
