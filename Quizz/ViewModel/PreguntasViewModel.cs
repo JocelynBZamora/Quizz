@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
+using System.Text.Json;
 using Quizz;
 using QuizzServer.Model;
 using QuizzServer.Services;
@@ -28,28 +29,30 @@ namespace QuizzServer.ViewModel
     {
 
         public int puntaje = 0;
-        List<PreguntaItem> pregunta = new();//persistente
+        public ObservableCollection<Usuario> Usuarios { get; set; } = new();
+        List<Usuario> usuarios = new();//persistente
         ListaServer server = new ListaServer();
         public PreguntasViewModel()
         {
+            ActualizarNombre();
+
             server.PersonaResivida += EntradaJugador;
-            cargarsecciones();
+            //cargarsecciones();
         }
 
-        public ObservableCollection<Usuario> Usuarios { get; private set; } = new();
 
         //agrega al jugador
         private void EntradaJugador(Respuesta obj)
         {
             if (obj.Nombre != null)
             {
-
-
                 Usuario u = new();
-                u.NombreUsuario = obj.Nombre;
-                Usuarios.Add(u);
+                u.Nombre = obj.Nombre;
+                usuarios.Add(u);
 
             }
+            ActualizarNombre();
+
             if (obj?.NumRespuesta != null)
             {
                 Usuario u = new();
@@ -57,29 +60,44 @@ namespace QuizzServer.ViewModel
                 u.RespuestaSeleccionada = obj.NumRespuesta;
                 Usuarios.Add(u);
 
-                foreach (var p in pregunta)
-                {
+                //foreach (var p in pregunta)
+                //{
 
-                    if (p.RespuestaCorrecta == obj.NumRespuesta)
-                    { //compara la informacion resivida si es correcta y suma el puntaje
-                        puntaje++;
-                    }
-                }
+                //    if (p.RespuestaCorrecta == obj.NumRespuesta)
+                //    { //compara la informacion resivida si es correcta y suma el puntaje
+                //        puntaje++;
+                //    }
+                //}
 
+            }
+            Guardar();
+        }
+        private void Guardar()
+        {
+            //crea el archivo json
+            var archivo = File.Create("usuarios.json");
+            JsonSerializer.Serialize(archivo, usuarios);
+            archivo.Close();
+        }
+        public void ActualizarNombre()
+        {
+            Usuarios.Clear();
+            foreach (var item in usuarios)
+            {
+                Usuarios.Add(item);
             }
         }
 
+        //public void cargarsecciones()
+        //{
+        //    string DirectorioBase = AppDomain.CurrentDomain.BaseDirectory;
+        //    string ruta = Path.Combine(DirectorioBase, @"Model\DatosModel1.json");
+        //    string json = File.ReadAllText(ruta);
 
-        public void cargarsecciones()
-        {
-            string DirectorioBase = AppDomain.CurrentDomain.BaseDirectory;
-            string ruta = Path.Combine(DirectorioBase, @"Model\DatosModel1.json");
-            string json = File.ReadAllText(ruta);
+        //    var datos = JsonConvert.DeserializeObject<Root>(json);
 
-            var datos = JsonConvert.DeserializeObject<Root>(json);
-
-            var t = datos;
-        }
+        //    var t = datos;
+        //}
 
 
         private void OnPropertyChanged(string propertyName)
