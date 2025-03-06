@@ -40,11 +40,10 @@ namespace QuizzServer.ViewModel
         //agrega al jugador
         private void EntradaJugador(Respuesta obj)
         {
-            if (obj != null)
+            if (obj.Nombre != null && obj?.NumRespuesta != null)
             {
 
-            App.Current.Dispatcher.Invoke(() =>
-            {
+            
                 Usuario u = new();
                 u.NombreUsuario = obj.Nombre;
                 u.RespuestaSeleccionada = obj.NumRespuesta;
@@ -55,7 +54,7 @@ namespace QuizzServer.ViewModel
                 { //compara la informacion resivida si es correcta y suma el puntaje
                     puntaje++;
                 }
-            });
+
             }
         }
    

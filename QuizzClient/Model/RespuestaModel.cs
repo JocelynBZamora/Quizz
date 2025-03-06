@@ -8,7 +8,7 @@ namespace QuizzClient.Model
 {
     public class RespuestaModel
     {
-        public int Respuesta { get; set; }
-        public string NombreUsuario { get; set; } = null!;
+        public int NumRespuesta { get; set; }
+        public string Nombre { get; set; } = null!;
     }
 }

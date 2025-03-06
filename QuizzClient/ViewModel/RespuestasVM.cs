@@ -26,7 +26,7 @@ namespace QuizzClient.ViewModel
 
         private void EnviarUsuario()
         {
-            if (Respuesta.NombreUsuario != string.Empty)
+            if (Respuesta.Nombre != string.Empty)
             {
                 cliente.Enviar(Respuesta);
 
@@ -34,7 +34,7 @@ namespace QuizzClient.ViewModel
         }
         private void EnviarRespuesta()
         {
-            if (Respuesta.Respuesta >= 1 && Respuesta.Respuesta <= 4)
+            if (Respuesta.NumRespuesta >= 1 && Respuesta.NumRespuesta <= 4)
             {
 
                 cliente.Enviar(Respuesta);
