@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace QuizzServer.Model
@@ -42,7 +42,7 @@ namespace QuizzServer.Model
             public List<PreguntaItem> Historia { get; set; } = new();
             public List<PreguntaItem> Español { get; set; } = new();
             public List<PreguntaItem> Matemáticas { get; set; } = new();
-            [JsonProperty("Ciencias Naturales")]
+            [JsonPropertyName("Ciencias Naturales")]
             public List<PreguntaItem> CienciasNaturales { get; set; } = new();
         }
     }

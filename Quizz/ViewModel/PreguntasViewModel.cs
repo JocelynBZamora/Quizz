@@ -35,7 +35,7 @@ namespace QuizzServer.ViewModel
         public PreguntasViewModel()
         {
             ActualizarNombre();
-
+            cargarSecciones();
             server.PersonaResivida += EntradaJugador;
             //cargarsecciones();
         }
@@ -89,16 +89,13 @@ namespace QuizzServer.ViewModel
             }
         }
 
-        //public void cargarsecciones()
-        //{
-        //    string DirectorioBase = AppDomain.CurrentDomain.BaseDirectory;
-        //    string ruta = Path.Combine(DirectorioBase, @"Model\DatosModel1.json");
-        //    string json = File.ReadAllText(ruta);
-
-        //    var datos = JsonConvert.DeserializeObject<Root>(json);
-
-        //    var t = datos;
-        //}
+        public void cargarSecciones()
+        {
+            string json = File.ReadAllText(@"Model\DatosModel1.json");
+            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            var preguntas = JsonSerializer.Deserialize<Root>(json, opciones);
+        }
+        
 
 
         private void OnPropertyChanged(string propertyName)

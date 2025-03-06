@@ -34,13 +34,13 @@ namespace QuizzServer.Services
 
                 var json = Encoding.UTF8.GetString(Buffer);
 
-                
+
                 var rect = JsonSerializer.Deserialize<Respuesta>(json);
                 if (rect != null)
                 {
                     try
                     {
-                     
+
                         PersonaResivida?.Invoke(rect);
                     }
                     catch (Exception ex)
@@ -52,9 +52,17 @@ namespace QuizzServer.Services
 
             }
         }
-        //void EnviarTiempo()
+        //void EnviarTiempo(Tiempo r)
         //{
-        //    IPEndPoint s
+        //    //destino 
+        //    IPEndPoint servidor = new(IPAddress.Broadcast, 65000);
+
+        //    //paquete
+        //    var json = JsonSerializer.Serialize(r);
+        //    byte[] buffer = Encoding.UTF8.GetBytes(json);
+
+        //    //envia
+        //    Servidor.Send(buffer, buffer.Length, servidor);
         //}
     }
 }
