@@ -97,8 +97,9 @@ namespace QuizzServer.ViewModel
         {
             foreach (var u in usuarios)
             {
-                Usuarios.Add(u);
+               Usuarios.Add(u);
             }
+
         }
 
         

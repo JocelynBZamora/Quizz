@@ -37,6 +37,21 @@ namespace QuizzServer.ViewModel
                 
                 preguntaItems = preguntas.Español;
             }
+            else if (seccion == "Matematicas")
+            {
+
+                preguntaItems = preguntas.Español;
+            }
+            else if (seccion == "Historia")
+            {
+
+                preguntaItems = preguntas.Historia;
+            }
+            else
+            {
+                preguntaItems = preguntas.CienciasNaturales;
+                
+            }
         }
 
         public void Receive(NavegacionModel message)
