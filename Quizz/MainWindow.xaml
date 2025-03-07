@@ -39,17 +39,19 @@
             </Grid.ColumnDefinitions>
             <!-- Sección de usuario -->
             <ItemsControl ItemsSource="{Binding Usuarios}" Height="280" VerticalAlignment="Top" Grid.Column="1" Background="#D0DDD0" Margin="5 0 ">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Rows="2"></UniformGrid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+               
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid Background="#D0DDD0" VerticalAlignment="Top" Height="280" Margin="10,0,10,0">
-                            <TextBlock Text="Usuarios:"  FontWeight="Bold" FontSize="20" Foreground="Black" Padding="5" Margin="0,0,0,5"/>
-                            <ListBox ItemsSource="{Binding Usuarios}" DisplayMemberPath="Nombre" Height="280" Background="#D0DDD0"/>
+                        <Grid Background="#D0DDD0" VerticalAlignment="Top" Height="auto" Margin="10,0,10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Usuario:"  FontWeight="Bold" VerticalAlignment="Center" FontSize="20" Foreground="Black" Padding="5" Margin="0,0,0,5"/>
+                            <Label HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="15" Grid.Column="1" Content="{Binding Nombre}"></Label>
+                            <!--<ListBox ItemsSource="{Binding usuarios}" DisplayMemberPath="Nombre" Height="280" Background="#D0DDD0"/>-->
 
                         </Grid>
                     </DataTemplate>
@@ -57,10 +59,38 @@
 
             </ItemsControl>
             <!---->
-            <Grid Height="280" VerticalAlignment="Top" Background="#D0DDD0">
-                <v:Preguntas Height="280" Width="488"></v:Preguntas>
+
+            <ContentControl Height="280" VerticalAlignment="Top" Background="#D0DDD0">
+                
+                <ContentControl.Resources>
+                    <v:Secciones x:Key="Secciones" Height="280" Width="488"></v:Secciones>
+                    <v:Preguntas x:Key="Preguntas" Height="280" Width="488"></v:Preguntas>
+                    <v:Ganador x:Key="Ganador" Height="280" Width="488"></v:Ganador>
+
+                </ContentControl.Resources>
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Style.Triggers>
+                            <DataTrigger Value="Secciones" Binding="{Binding Vista}">
+                                <Setter Property="Content" Value="{StaticResource Secciones}"/>
+                                <!--funciona como if-->
+
+                            </DataTrigger>
+                                <!--Preguntas-->
+                            <DataTrigger Value="Preguntas" Binding="{Binding Vista}">
+                                <Setter Property="Content" Value="{StaticResource Preguntas}"/>
+                                <!--funciona como if-->
+                            </DataTrigger>
+                            <DataTrigger Value="Ganador" Binding="{Binding Vista}">
+                                <Setter Property="Content" Value="{StaticResource Ganador}"/>
+                                <!--funciona como if-->
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+                
                 <!--se supone que tambien aqui se debe de mostrar las preguntas y el tiempo a elegir-->
-            </Grid>
+            </ContentControl>
         </Grid>
     </Grid>
 </Window>

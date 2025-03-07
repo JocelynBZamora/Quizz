@@ -22,12 +22,14 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using static QuizzServer.Model.PeeguntasModel1;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace QuizzServer.ViewModel
 {
-    public partial class PreguntasViewModel : ObservableObject
+    public partial class PreguntasViewModel : ObservableRecipient,IRecipient<NavegacionModel>
     {
-
+        [ObservableProperty]
+        public string vista = "Secciones";
         [ObservableProperty]
         private string nombre;
 
@@ -40,13 +42,16 @@ namespace QuizzServer.ViewModel
         List<Usuario> usuarios = new();//persistente
         ListaServer server = new ListaServer();
         public PreguntasViewModel()
-        {
+        { 
+            ///resive mensajes
+            IsActive = true;
             ActualizarNombre();
-            cargarSecciones();
             server.PersonaResivida += EntradaJugador;
             //cargarsecciones();
         }
 
+
+    
 
         //agrega al jugador
         private void EntradaJugador(Respuesta obj)
@@ -57,6 +62,7 @@ namespace QuizzServer.ViewModel
                 Usuario u = new();
                 u.Nombre = obj.Nombre;
                 usuarios.Add(u); 
+
 
             }
             ActualizarNombre();
@@ -89,20 +95,23 @@ namespace QuizzServer.ViewModel
         }
         public void ActualizarNombre()
         {
-            Usuarios.Clear();
             foreach (var u in usuarios)
             {
                 Usuarios.Add(u);
             }
         }
 
-        public void cargarSecciones()
-        {
-            string json = File.ReadAllText(@"Model\DatosModel1.json");
-            var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var preguntas = JsonSerializer.Deserialize<Root>(json, opciones);
-        }
         
+
+        public void Receive(NavegacionModel message)
+        {
+            Vista = message.vista;
+            if(message.seccion!= null)
+            {
+                eventoshelper.setSeccion?.Invoke(message.seccion);
+            }
+        }
+
 
 
         //private void OnPropertyChanged(string propertyName)

@@ -22,9 +22,9 @@ namespace QuizzClient.Services
         }
         public void Enviar(RespuestaModel r)
         {
-            string ipRemota = "192.168.1.69";
+          
             //destino 
-            IPEndPoint servidor = new(IPAddress.Parse(ipRemota), 65000);
+            IPEndPoint servidor = new(IPAddress.Broadcast, 65000);
 
             //paquete
             var json = JsonSerializer.Serialize(r);
